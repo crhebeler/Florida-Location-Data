@@ -1,0 +1,37 @@
+{
+  "name": "locationtrends",
+  "version": "1.0.0",
+  "description": "Location Trends",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "seed:births": "node ./scripts/seeders/Births-by-co",
+    "seed:deaths": "node ./scripts/seeders/Deaths-by-co",
+    "seed:grade": "node ./scripts/seeders/FloridaSchoolGrade",
+    "seed:marriages": "node ./scripts/seeders/Marriage-Dissolution",
+    "seed:marriagesco": "node ./scripts/seeders/Marriages-by-co",
+    "seed:population": "node ./scripts/seeders/Population-and-Projection",
+    "seed:all": "npm run seed:births | npm run seed:deaths | npm run seed:grade | npm run seed:marriages | npm run seed:marriagesco | npm run seed:population",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "logger": "0.0.1",
+    "mongoose": "^5.0.11",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.2"
+  },
+  "devDependencies": {
+    "concurrently": "3.6.1"
+  }
+}
